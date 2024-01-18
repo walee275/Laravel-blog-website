@@ -4,7 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\PostCondition;
-
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +22,16 @@ Route::controller(PostController::class)->name('posts.')->group(function () {
     Route::get('/blog', 'index')->name('index');
     Route::get('/blog/{post:slug}', 'show')->name('show');
 });
-
+Route::get('/artisan-storage-link', function(){
+    $command = 'storage:link';
+    Artisan::call($command);
+    return redirect()->back();
+});
+Route::get('/artisan-cache-clear', function(){
+    $command = 'cache:clear';
+    Artisan::call($command);
+    return redirect()->back();
+});
 
 
 Route::middleware([
