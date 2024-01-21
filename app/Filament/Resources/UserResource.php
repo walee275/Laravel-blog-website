@@ -8,6 +8,7 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Builder;
 use Rawilk\FilamentPasswordInput\Password;
 use App\Filament\Resources\UserResource\Pages;
@@ -35,7 +36,9 @@ class UserResource extends Resource
                     ->required()
                     ->options(User::ROLES),
                 Password::make('password')
-                    ->label('Password'),
+                    ->label('Password')
+                    ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                    ->dehydrated(fn ($state) => filled($state)),
             ]);
     }
 
