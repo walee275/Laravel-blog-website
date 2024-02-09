@@ -5,4 +5,6 @@
             <x-posts.category-badge :category="$category" />
         @endforeach
     </div>
+    <hr class=" mt-2 my-3 w-75">
+    <x-ads-banner />
 </div>

@@ -32,6 +32,29 @@
         code {
             font-family: 'Courier New', monospace;
         }
+
+        /* Ads Terra Css */
+        .mobileShow {
+            display: none;
+        }
+
+        /* Smartphone Portrait and Landscape */
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            .mobileShow {
+                display: inline;
+            }
+        }
+
+        .mobileHide {
+            display: inline;
+        }
+
+        /* Smartphone Portrait and Landscape */
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            .mobileHide {
+                display: none;
+            }
+        }
     </style>
     <!-- Styles -->
     @livewireStyles
@@ -57,12 +80,11 @@
             $(this).html('<code>' + $(this).html() + '</code>');
         })
 
-        $('article').each(function(){
-            $(this).find('h1, h2, h3').each(function(){
+        $('article').each(function() {
+            $(this).find('h1, h2, h3').each(function() {
                 $(this).addClass('text-lg font-semibold text-gray-900 mb-3 my-3');
             })
         })
-
     </script>
 </body>
 
